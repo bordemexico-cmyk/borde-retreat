@@ -1,0 +1,13 @@
+{
+  "name": "borde-retreat",
+  "version": "1.0.0",
+  "description": "BORDÉ Oaxaca Cultural Retreat Website",
+  "main": "index.html",
+  "scripts": {
+    "dev": "echo 'Open index.html in your browser'",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": ["retreat", "oaxaca", "cultural", "travel"],
+  "author": "Katia",
+  "license": "MIT"
+}

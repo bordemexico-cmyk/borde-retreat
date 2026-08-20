@@ -1,0 +1,583 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BORDÉ - Oaxaca Cultural Retreat</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* HERO SECTION WITH BACKGROUND IMAGE */
+        .hero {
+            background-image: url('https://drive.google.com/uc?id=1Bgdup1Ddsue8EuuT_LfP0cautLvbcEbt&export=download');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            padding: 120px 40px;
+            text-align: center;
+        }
+
+        /* Dark overlay for text readability */
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1;
+        }
+
+        .hero > * {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h1 {
+            font-size: 3.5em;
+            margin-bottom: 20px;
+            font-weight: 300;
+            letter-spacing: 2px;
+            color: #fff;
+        }
+
+        .hero .tagline {
+            font-size: 1.4em;
+            margin-bottom: 40px;
+            font-style: italic;
+            font-weight: 300;
+            opacity: 0.95;
+            color: #fff;
+        }
+
+        .hero .subtitle {
+            max-width: 700px;
+            margin: 0 auto 50px;
+            font-size: 1.1em;
+            line-height: 1.8;
+            font-weight: 300;
+            opacity: 0.9;
+            color: #fff;
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 15px 40px;
+            background-color: #fff;
+            color: #8B4513;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            cursor: pointer;
+            border: none;
+        }
+
+        .cta-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        /* INTRODUCTION SECTION */
+        .intro-section {
+            padding: 80px 60px;
+            max-width: 900px;
+            margin: 0 auto;
+            background: #fafaf8;
+        }
+
+        .intro-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: #8B4513;
+            font-weight: 300;
+        }
+
+        .intro-text {
+            font-size: 1.1em;
+            line-height: 1.9;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .intro-text strong {
+            color: #8B4513;
+            font-weight: 600;
+        }
+
+        .intro-text em {
+            font-style: italic;
+            color: #666;
+        }
+
+        /* VALUES SECTION */
+        .values-section {
+            padding: 80px 60px;
+            background: #fff;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .values-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: #8B4513;
+            font-weight: 300;
+        }
+
+        .values-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-top: 40px;
+        }
+
+        .value-card {
+            padding: 30px;
+            border-left: 4px solid #8B4513;
+            background: #fafaf8;
+            transition: transform 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .value-card h3 {
+            font-size: 1.3em;
+            margin-bottom: 15px;
+            color: #8B4513;
+            font-weight: 600;
+        }
+
+        .value-card p {
+            font-size: 0.95em;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        /* RETREAT OVERVIEW */
+        .retreat-overview {
+            padding: 80px 60px;
+            background: linear-gradient(135deg, #f9f8f6 0%, #efefeb 100%);
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .retreat-overview h2 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: #8B4513;
+            font-weight: 300;
+        }
+
+        .overview-item {
+            margin-bottom: 20px;
+            font-size: 1.05em;
+            line-height: 1.8;
+        }
+
+        .overview-item strong {
+            color: #8B4513;
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        /* GALLERY SECTION */
+        .gallery-section {
+            padding: 80px 60px;
+            background: #fff;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .gallery-section h2 {
+            font-size: 2.2em;
+            margin-bottom: 40px;
+            color: #8B4513;
+            font-weight: 300;
+            text-align: center;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 40px;
+        }
+
+        .gallery-item {
+            background: #f0f0f0;
+            aspect-ratio: 1;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #999;
+            font-size: 0.9em;
+            overflow: hidden;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* ABOUT KATIA SECTION */
+        .about-section {
+            padding: 80px 60px;
+            background: #fafaf8;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .about-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .about-image img {
+            width: 100%;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .about-text h2 {
+            font-size: 2.2em;
+            margin-bottom: 30px;
+            color: #8B4513;
+            font-weight: 300;
+        }
+
+        .about-text p {
+            font-size: 1.05em;
+            line-height: 1.8;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .about-text p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* FOOTER */
+        .footer {
+            background: #333;
+            color: #fff;
+            padding: 60px 40px;
+            text-align: center;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .footer h3 {
+            margin-bottom: 20px;
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+
+        .footer-links {
+            margin: 20px 0;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 20px;
+            transition: color 0.3s;
+        }
+
+        .footer-links a:hover {
+            color: #A0522D;
+        }
+
+        .contact-buttons {
+            margin-top: 30px;
+        }
+
+        .contact-btn {
+            display: inline-block;
+            padding: 12px 30px;
+            margin: 10px;
+            background: #8B4513;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: all 0.3s;
+        }
+
+        .contact-btn:hover {
+            background: #A0522D;
+            transform: scale(1.05);
+        }
+
+        /* MOBILE RESPONSIVE */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 80px 30px;
+            }
+
+            .hero h1 {
+                font-size: 2.5em;
+            }
+
+            .hero .tagline {
+                font-size: 1.1em;
+            }
+
+            .hero .subtitle {
+                font-size: 1em;
+            }
+
+            .intro-section,
+            .values-section,
+            .retreat-overview,
+            .about-section,
+            .gallery-section,
+            .footer {
+                padding: 50px 30px;
+            }
+
+            .intro-section h2,
+            .retreat-overview h2,
+            .gallery-section h2 {
+                font-size: 1.8em;
+            }
+
+            .values-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-container {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .about-text h2 {
+                font-size: 1.8em;
+            }
+
+            .about-text p {
+                font-size: 1em;
+            }
+
+            .intro-text {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- HERO SECTION WITH THREADS IMAGE BACKGROUND -->
+    <section class="hero">
+        <h1>BORDÉ</h1>
+        <p class="tagline">Roots, Wisdom, Transformation</p>
+        <p class="subtitle">
+            An immersive cultural retreat in Oaxaca. More than a tourist trip,
+            it's a profound encounter with the indigenous communities who safeguard
+            the essence of Mexico.
+        </p>
+        <a href="#intro" class="cta-button">Discover More</a>
+    </section>
+
+    <!-- INTRODUCTION SECTION -->
+    <section class="intro-section" id="intro">
+        <h2>What is BORDÉ?</h2>
+
+        <p class="intro-text">
+            BORDÉ is a 6-day cultural retreat designed for those who seek to
+            <strong>connect deeply with Mexico</strong>—not as tourists, but as
+            students, collaborators, and learners of ancestral wisdom.
+        </p>
+
+        <p class="intro-text">
+            Facilitated by Katia, this retreat takes you to <strong>authentic encounters with indigenous artisans</strong>,
+            local archaeologists, and guardians of traditions that have endured centuries.
+            You'll learn about cochineal dye—that red pigment that colored Mexico's history—,
+            traditional textiles, ancestral embroidery techniques, and the worldview of
+            communities who have kept this heritage alive.
+        </p>
+
+        <p class="intro-text">
+            It's not an intensive workshop or an art class. It's a <strong>journey inward</strong>,
+            where each activity—from climbing the pyramids of Monte Albán to learning
+            to embroider with thread as a tool of expression—contributes to your understanding of real Mexico.
+        </p>
+    </section>
+
+    <!-- VALUES SECTION -->
+    <section class="values-section">
+        <h2>Our Commitment: Sustainable & Regenerative Travel</h2>
+
+        <div class="values-grid">
+            <div class="value-card">
+                <h3>🌿 Sustainable</h3>
+                <p>
+                    Every dollar you invest goes directly to artisans, local guides, cooks,
+                    and indigenous communities. It's not mass tourism—it's direct support to
+                    enterprises and ancestral knowledge.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <h3>📚 Mutual Learning</h3>
+                <p>
+                    We don't come to teach. We come to learn. Our small group (maximum 13 people)
+                    allows genuine conversations, real questions, and relationships that transcend
+                    transactional tourism.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <h3>🎨 Authenticity</h3>
+                <p>
+                    Work directly with Pastora in her cochineal farm, with Carlos in his embroidery workshop,
+                    with Trini in her kitchen. These aren't "demonstrations for tourists"—they're encounters
+                    with artisans dedicated to their craft.
+                </p>
+            </div>
+
+            <div class="value-card">
+                <h3>🔄 Transformation</h3>
+                <p>
+                    This retreat isn't about escape. It's about returning changed. Understanding
+                    Mexico's roots means understanding yourself, your own place in community,
+                    and what truly connects us.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- RETREAT OVERVIEW -->
+    <section class="retreat-overview">
+        <h2>6 Days in Oaxaca</h2>
+
+        <div class="overview-item">
+            <strong>📍 Location</strong>
+            Oaxaca and surrounding indigenous communities
+        </div>
+
+        <div class="overview-item">
+            <strong>📅 Dates</strong>
+            February 25 - March 3, 2027
+        </div>
+
+        <div class="overview-item">
+            <strong>👥 Capacity</strong>
+            Maximum 13 people (minimum 8)
+        </div>
+
+        <div class="overview-item">
+            <strong>💰 Price</strong>
+            $2,642 USD per person (group of 13)
+        </div>
+
+        <div class="overview-item">
+            <strong>🎯 What You'll Learn</strong>
+            Cochineal dye production, natural dyes, ancestral embroidery techniques, pre-Hispanic history,
+            indigenous worldview, and deep connection with local artisans.
+        </div>
+
+        <div class="overview-item">
+            <strong>✨ What's Included</strong>
+            6 nights accommodation, all meals, professional guides, workshops with artisans,
+            local transportation, and Katia's facilitation.
+        </div>
+    </section>
+
+    <!-- ABOUT KATIA SECTION -->
+    <section class="about-section">
+        <div class="about-container">
+            <div class="about-image">
+                <img src="https://drive.google.com/uc?id=1y2G4tqhFOXqWs5Ps_Hiky0WqPjqTWDfY&export=download" alt="Katia Herrera">
+            </div>
+            <div class="about-text">
+                <h2>About Katia</h2>
+                <p>
+                    I'm Katia Herrera, a Mexican industrial designer, photographer, and the artist behind BORDÉ.
+                </p>
+                <p>
+                    For over six years, I have combined photography, embroidery, and design to transform meaningful images into one-of-a-kind works of art. By carefully stitching directly onto printed photographs, I add color, texture, and dimension while preserving the story and emotion behind each memory.
+                </p>
+                <p>
+                    Through BORDÉ by Katia, I create custom embroidered photographs, teach embroidery on paper through online courses and workshops, and design templates and kits for anyone who wants to explore this unique art form.
+                </p>
+                <p>
+                    Inspired by my Mexican heritage, my work celebrates color, craftsmanship, human connection, and the beauty of transforming personal memories into art.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="gallery-section">
+        <h2>Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://drive.google.com/uc?id=1Bgdup1Ddsue8EuuT_LfP0cautLvbcEbt&export=download" alt="Threads">
+            </div>
+            <div class="gallery-item">
+                <img src="https://drive.google.com/uc?id=1qQR8U_wT83eCWJrYgA_pQcjNUVQ26Jpe&export=download" alt="Textiles">
+            </div>
+            <div class="gallery-item" style="background: #f0f0f0; color: #999;">
+                [Photo coming soon]
+            </div>
+            <div class="gallery-item" style="background: #f0f0f0; color: #999;">
+                [Photo coming soon]
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <section class="footer">
+        <h3>Ready to Join?</h3>
+        <p>Begin your journey of cultural immersion and personal transformation.</p>
+
+        <div class="contact-buttons">
+            <a href="https://wa.me/YOURWHATSAPP" class="contact-btn">WhatsApp</a>
+            <a href="mailto:borde.mexico@gmail.com" class="contact-btn">Email</a>
+        </div>
+
+        <div class="footer-links">
+            <a href="#intro">About</a>
+            <a href="#values">Values</a>
+            <a href="#gallery">Gallery</a>
+        </div>
+
+        <p style="margin-top: 40px; font-size: 0.9em; opacity: 0.8;">
+            © 2027 BORDÉ Oaxaca Retreat. All rights reserved.
+        </p>
+    </section>
+
+</body>
+</html>
